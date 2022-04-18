@@ -1,37 +1,44 @@
-<!DOCTYPE html>
-<html >
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Pest Detection</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">  
+<title>Python Flask Upload and display image</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
-
 <body>
-  <script src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
-<body>
-<div id="formWrapper">
-
-<form action="{{ url_for('predict')}}" method="POST" id="form">
-<div class="logo">
-<img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
-</div>
+<p><h1 align="center">Python Flask Upload and display image</h1></p>
+<div class="container">
 <div class="row">
-		<div class="form-item">
-			<p class="formLabel">Upload Image</p>
-			<input type="file" name="img" id="img" class="form-style" required/>
-		</div>
-	<div class="form-item">
-		<input type="submit" name="submit" value="Predict">
-		<div class="clear-fix"></div>
-		</div>
-		{{output1}}
-</form>
+    <h2>Select a file to upload</h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+    {% if filename %}
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
+        </div>
+        <div>
+            {{output}}
+        </div>
+    {% endif %}
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </p>
+    </form>
 </div>
-</body>
-</html>
-  
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="{{ url_for('static', filename='js/index.js') }}"></script>
-
+</div>
 </body>
 </html>
