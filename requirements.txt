@@ -2,14 +2,6 @@ Flask
 keras
 tensorflow
 opencv-python
-gunicorn
-itsdangerous
-Sphinx
-Jinja2
-MarkupSafe
 Werkzeug
-numpy
-scipy
-scikit-learn
-matplotlib
-pandas
+python
+OS
