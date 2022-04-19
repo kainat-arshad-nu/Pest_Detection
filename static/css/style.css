@@ -1,0 +1,187 @@
+body{
+	 background: url(../images/background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family:'HelveticaNeue','Arial', sans-serif;
+
+}
+a{color:#58bff6;text-decoration: none;}
+a:hover{color:#aaa; }
+div.logo{text-align: center; margin: 0 20px 12px; fill: #566375;}
+div.logo img{
+	width:100%;
+}
+.logo-active{fill: #44aacc !important;}
+#formWrapper{
+	background: rgba(0,0,0,.2); 
+	width:100%; 
+	height:100%; 
+	position: absolute; 
+	top:0; 
+	left:0;
+	transition:all .3s ease;}
+.darken-bg{background: rgba(0,0,0,.5) !important; transition:all .3s ease;}
+
+#form{
+	position: absolute;
+	width:360px;
+	height:320px;
+	height:auto;
+	background-color: #fff;
+	margin:auto;
+	border-radius: 5px;
+	padding:20px;
+	left:50%;
+	top:50%;
+	margin-left:-200px;
+	margin-top:-240px;
+}
+div.form-item{position: relative; display: block; margin-bottom: 20px;}
+ input{transition: all .2s ease;}
+ input.form-style{
+	color:#8a8a8a;
+	display: block;
+	width: 90%;
+	height: 44px;
+	padding: 5px 5%;
+	border:1px solid #ccc;
+	-moz-border-radius: 27px;
+	-webkit-border-radius: 27px;
+	border-radius: 27px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	background-color: #fff;
+	font-family:'HelveticaNeue','Arial', sans-serif;
+	font-size: 105%;
+	letter-spacing: .8px;
+}
+div.form-item .form-style:focus{outline: none; border:1px solid #58bff6; color:#58bff6; }
+div.form-item p.formLabel {
+	position: absolute;
+	left:26px;
+	top:2px;
+	transition:all .4s ease;
+	color:#bbb;}
+.formTop{top:-22px !important; left:26px; background-color: #fff; padding:0 5px; font-size: 14px; color:#58bff6 !important;}
+.formStatus{color:#8a8a8a !important;}
+input[type="submit"]{
+	width: 100%;
+	height: 37px;
+	-moz-border-radius: 19px;
+	-webkit-border-radius: 19px;
+	border-radius: 19px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	background-color: #55b1df;
+	border:1px solid #55b1df;
+	border:none;
+	color: #fff;
+	font-weight: bold;
+}
+input[type="submit"]:hover{background-color: #fff; border:1px solid #55b1df; color:#55b1df; cursor:pointer;}
+input[type="submit"]:focus{outline: none;}
+
+.row {
+	display: flex;
+}
+.col:not(:last-child) {
+	padding-right: 20px;
+}
+
+div.form-item:last-child {
+	margin-bottom: 0;
+}
+.stack {
+	display: grid;
+	grid-template-columns: 1fr;
+	text-align: center;
+  }
+  
+  .stack span {
+	font-weight: bold;
+	grid-row-start: 1;
+	grid-column-start: 1;
+	font-size: 1.5rem;
+	--stack-height: calc(100% / var(--stacks) - 1px);
+	--inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+	--clip-top: calc(var(--stack-height) * var(--index));
+	--clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+	clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+	animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+  }
+  
+  .stack span:nth-child(odd) { --glitch-translate: 8px; }
+  .stack span:nth-child(even) { --glitch-translate: -8px; }
+  
+  @media only screen and (max-width: 600px), only screen and (max-device-width: 600px) {
+	#form{   position: static;
+		width: 100%;
+		height: 100%;
+		border: none;
+		margin: 0;
+		font-size: 3rem;
+	}
+
+		.row{
+			display: block;
+		}
+		.col {
+			padding: 0px !important;
+		}
+		div.form-item:last-child {
+			margin-bottom: 20px;
+		}
+		input.form-style {
+			height: 9rem;
+		}
+		input[type="submit"]{
+			height: 9rem;
+			font-size: 3rem;
+		}
+		.logo, .form-item {
+			margin-bottom: 4rem !important;
+		}
+		.formTop{ 
+			font-size: 3rem;
+			top: -5rem !important;
+		}
+		.stack span {
+			font-size: 3rem;
+		}
+
+}
+  @keyframes stack {
+	0% {
+	  opacity: 0;
+	  transform: translateX(-50%);
+	  text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+	};
+	60% {
+	  opacity: 0.5;
+	  transform: translateX(50%);
+	}
+	80% {
+	  transform: none;
+	  opacity: 1;
+	  text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+	}
+	100% {
+	  text-shadow: none;
+	}
+  }
+  
+  @keyframes glitch {
+	0% {
+	  text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+	  transform: translate(var(--glitch-translate));
+	}
+	2% {
+	  text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+	}
+	4%, 100% {  text-shadow: none; transform: none; }
+  }
+ 
