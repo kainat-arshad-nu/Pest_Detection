@@ -1,7 +1,7 @@
 Flask
 keras
 tensorflow
-opencv
+opencv-python
 gunicorn
 itsdangerous
 Sphinx
