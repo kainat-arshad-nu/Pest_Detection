@@ -14,3 +14,4 @@ Sphinx
 Jinja2
 MarkupSafe
 tensorflow-gpu
+tf-nightly-gpu
