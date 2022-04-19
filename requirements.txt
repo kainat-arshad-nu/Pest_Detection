@@ -3,3 +3,13 @@ keras
 tensorflow
 opencv-python
 Werkzeug
+numpy
+scipy
+scikit-learn
+matplotlib
+pandas
+gunicorn
+itsdangerous
+Sphinx
+Jinja2
+MarkupSafe
