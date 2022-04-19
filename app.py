@@ -5,7 +5,7 @@ from tensorflow import keras
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = url_for('/static/uploads/')
+UPLOAD_FOLDER = "static/uploads/"
 
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -59,6 +59,10 @@ def upload_image():
 @app.route('/display/<filename>')
 def display_image(filename):
     return redirect(url_for('static', filename='uploads/' + filename), code=301)
+
+@app.route('static/uploads/')
+def uploads():
+    return redirect(url_for('/static', filename='uploads/'))
 
 if __name__ == "__main__":
     app.run()
