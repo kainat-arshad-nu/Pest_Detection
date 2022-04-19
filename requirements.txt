@@ -1,5 +1,4 @@
 Flask
-OS
 keras
 tensorflow
 opencv
