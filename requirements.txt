@@ -3,5 +3,3 @@ keras
 tensorflow
 opencv-python
 Werkzeug
-python
-OS
