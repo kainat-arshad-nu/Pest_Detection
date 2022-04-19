@@ -1,0 +1,16 @@
+Flask
+os
+keras
+tensorflow
+opencv
+gunicorn
+itsdangerous
+Sphinx
+Jinja2
+MarkupSafe
+Werkzeug
+numpy
+scipy
+scikit-learn
+matplotlib
+pandas
