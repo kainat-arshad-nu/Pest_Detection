@@ -60,7 +60,7 @@ def upload_image():
 def display_image(filename):
     return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
-@app.route('static/uploads/')
+@app.route('/static/uploads/')
 def uploads():
     return redirect(url_for('/static', filename='uploads/'))
 
