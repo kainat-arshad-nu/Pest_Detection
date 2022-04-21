@@ -58,11 +58,11 @@ def upload():
 
 @app.route('/display/<filename>')
 def display_image(filename):
-    return redirect(url_for('static', filename='uploads/' + filename), code=301)
+    return redirect(url_for('static', filename='/uploads/' + filename), code=301)
 
 @app.route('/static/uploads/')
 def uploads():
-    return redirect(url_for('/static', filename='uploads/'))
+    return redirect(url_for('static', filename='/uploads/'))
 
 if __name__ == "__main__":
     app.run()
