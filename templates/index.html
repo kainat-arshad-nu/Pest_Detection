@@ -25,7 +25,7 @@
             <img src="{{ url_for('display_image', filename=filename) }}">
         </div>
     {% endif %}
-    <form method="post" action="/" enctype="multipart/form-data">
+    <form method="post" action="{{ url_for('upload')}}" enctype="multipart/form-data">
         <dl>
             <p style="display: flex; justify-content: center;">
                 <input type="file" name="file" class="form-control" autocomplete="off" required style="width: 30%;">

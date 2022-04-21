@@ -21,8 +21,8 @@ def allowed_file(filename):
 def home():
     return render_template('index.html')
 
-@app.route('/', methods=['POST'])
-def upload_image():
+@app.route('/upload', methods=['POST'])
+def upload():
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
