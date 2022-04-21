@@ -5,7 +5,7 @@ from tensorflow import keras
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = "static/uploads/"
+UPLOAD_FOLDER = "static/images/"
 
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
