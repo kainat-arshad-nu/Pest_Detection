@@ -5,7 +5,12 @@ from tensorflow import keras
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = "static/uploads/"
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+# UPLOAD_FOLDER = "static/uploads/"
+UPLOAD_FOLDER = url_for("static/uploads/")
 
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -15,11 +20,6 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-@app.route('/')
-def home():
-    return render_template('index.html')
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -39,7 +39,7 @@ def upload():
         import cv2 as cv
         from keras.preprocessing import image
         
-        img = image.load_img(os.path.join(app.config['UPLOAD_FOLDER'], filename), target_size = (224,224))
+        #img = image.load_img(os.path.join(app.config['UPLOAD_FOLDER'], filename), target_size = (224,224))
         gray_image = cv.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         gray_image = gray_image / 255
         gray_image = cv.resize(gray_image, (224, 224))
