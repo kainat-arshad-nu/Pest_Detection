@@ -2,6 +2,8 @@ from flask import Flask, flash, request, redirect, url_for, render_template
 import os
 from werkzeug.utils import secure_filename
 from tensorflow import keras
+import cv2 as cv
+from keras.preprocessing import image
 
 app = Flask(__name__)
 
@@ -34,9 +36,6 @@ def upload():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         
         model = keras.models.load_model('finalized_model')
-
-        import cv2 as cv
-        from keras.preprocessing import image
         
         #img = image.load_img(os.path.join(app.config['UPLOAD_FOLDER'], filename), target_size = (224,224))
         gray_image = cv.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename))
