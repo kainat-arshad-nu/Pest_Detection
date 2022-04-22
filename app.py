@@ -10,7 +10,6 @@ def home():
     return render_template('index.html')
 
 UPLOAD_FOLDER = "static/uploads/"
-# UPLOAD_FOLDER = url_for("static/uploads/")
 
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -60,9 +59,9 @@ def upload():
 def display_image(filename):
     return redirect(url_for('static', filename='/uploads/' + filename), code=301)
 
-@app.route('/static/uploads/')
-def uploads():
-    return redirect(url_for('static', filename='/uploads/'))
+# @app.route('/static/uploads/')
+# def uploads():
+#     return redirect(url_for('static', filename='/uploads/'))
 
 if __name__ == "__main__":
     app.run()
