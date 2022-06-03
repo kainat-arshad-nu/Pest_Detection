@@ -59,7 +59,7 @@ def display_image(filename):
     return redirect(url_for('static', filename='/uploads/' + filename), code=301)
 
 @app.route('/api/upload', methods=['POST'])
-def upload():
+def upload_api():
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
