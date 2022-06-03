@@ -83,8 +83,10 @@ def upload_api():
         a=prediction.reshape(-1)
         list1 = a.tolist()
         list1.index(max(list1))
-
-        return classes[list1.index(max(list1))]
+    else:
+        return "INVALID FORMAT"
+        
+    return classes[list1.index(max(list1))]
 
 if __name__ == "__main__":
     app.run()
