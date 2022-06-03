@@ -58,9 +58,33 @@ def upload():
 def display_image(filename):
     return redirect(url_for('static', filename='/uploads/' + filename), code=301)
 
-# @app.route('/static/uploads/')
-# def uploads():
-#     return redirect(url_for('static', filename='/uploads/'))
+@app.route('/api/upload', methods=['POST'])
+def upload():
+    if 'file' not in request.files:
+        flash('No file part')
+        return redirect(request.url)
+    file = request.files['file']
+    if file.filename == '':
+        flash('No image selected for uploading')
+        return redirect(request.url)
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        
+        model = keras.models.load_model('finalized_model')
+        
+        gray_image = cv.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        gray_image = gray_image / 255
+        gray_image = cv.resize(gray_image, (224, 224))
+        gray_image = gray_image.reshape(-1, 224, 224, 3)
+
+        classes = ['aphids','armyworm','beetle','bollworm','grasshopper','mites','mosquito','sawfly','stem_borer']
+        prediction=model.predict(gray_image)
+        a=prediction.reshape(-1)
+        list1 = a.tolist()
+        list1.index(max(list1))
+
+        return classes[list1.index(max(list1))]
 
 if __name__ == "__main__":
     app.run()
