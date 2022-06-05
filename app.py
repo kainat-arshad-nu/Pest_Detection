@@ -61,12 +61,10 @@ def display_image(filename):
 @app.route('/api/upload', methods=['POST'])
 def upload_api():
     if 'file' not in request.files:
-        flash('No file part')
-        return redirect(request.url)
+        return 'No file part'
     file = request.files['file']
     if file.filename == '':
-        flash('No image selected for uploading')
-        return redirect(request.url)
+        return 'No image selected for uploading'
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
