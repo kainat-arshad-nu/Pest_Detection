@@ -4,8 +4,10 @@ from werkzeug.utils import secure_filename
 from tensorflow import keras
 import cv2 as cv
 from keras.preprocessing import image
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def home():
