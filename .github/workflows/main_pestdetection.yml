@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'pestdetection'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A78051D124F9495D9BF0A407176A33D1 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0D3B82B45A454F65BB1DD17C3169ADEE }}
